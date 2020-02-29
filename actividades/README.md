@@ -15,6 +15,7 @@ Revisar la parte teorica la cual se encuentra en el siguiente [enlace](https://g
 ### 2.1. Apuntadores y variables
 
 1. Despues de que se simula el siguiente [codigo](https://goo.gl/QXBsL8), ¿Cual es el valor final de la variable ch?
+##### R. El valor final de ch es: e
 
 ```C
 #include <stdio.h>
@@ -62,7 +63,7 @@ Por que se muestran los valores mostrados a la salida en pantalla. Puede ser uti
 ### 2.2. Apuntadores y vectores
 
 1. ¿Que es lo que hace el siguiente [codigo](https://goo.gl/ybji6p)?
-
+##### R. Este código llena un vector con los 4 primeros números triangulares apartir de otro vector y operaciones básicas.
 ```C
 #include <stdio.h>
 
@@ -82,7 +83,7 @@ int main() {
 ```
 
 2. ¿Que es lo que hace el siguiente [codigo](https://goo.gl/jnaR9z)?
-
+##### R. Este código hace lo mismo que el anterior, pero tiene una modificación leve, ya que utiliza direcciones como apuntadores
 ```C
 #include <stdio.h>
 
@@ -102,7 +103,7 @@ int main() {
 ```
 
 3. ¿Que es lo que hace el siguiente [codigo](https://goo.gl/Ao4mjH)?
-
+##### R. Este código hace lo mismo que los anteriores, pero declara oficialmente dos apuntadores con los cuales hace las operaciones
 ```C
 #include <stdio.h>
 
@@ -160,8 +161,9 @@ void incremento(int i) {
 
 Simule el programa anterior usando el siguiente [enlace](https://goo.gl/NmWCAc) y responda las siguientes preguntas:
 * ¿El valor de v cambia?, ¿Por que?
+##### R. No, porque estan enviando directamente un valor y el cambio solo se vera reflejado en el scope de esta función. 
 * ¿Por que en la linea cuyo comentario es Pregunta se usa el asterisco (*) al invocar la funcion?
-
+##### R. porque se esta enviando como parametro un apuntador y al poner (*) da el valor que posee este apuntador, en este caso 3.
 2. Dado el siguiente prototipo para la funcion **incremento**:
 
 ```C
@@ -194,9 +196,11 @@ void incremento(int *i) {
 
 Simule el programa anterior usando el siguiente [enlace](https://goo.gl/aTyRft) y responda las siguientes preguntas:
 * ¿El valor de v cambia?, ¿Por que?
+##### R. Si, porque estamos manejando un apuntador como parametro y este modifica directamente el valor que hay en esa dirección de memoria.
 * ¿Por que en la linea cuyo comentario es **Pregunta 2** se usa el ampersand (&) al invocar la funcion?
+##### R. Porque nuestra función incremento recibe como parametro una dirección de memoria y v contiene un valor, así que agregamos & como una referencia.
 * ¿Por que en la linea cuyo comentario es **Pregunta 3** no se usa el ampersand (&) al invocar la funcion?, ¿Que pasa si se usa el ampersand?
-
+##### R. No se usa, ya que p lo hemos definido previamente como un apuntador.
 4. Dado el siguiente codigo:
 
 ```C
