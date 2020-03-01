@@ -437,31 +437,31 @@ Ahora responda las siguientes preguntas:
 
 | Expresión  | Valor |
 | ------------- | ------------- |
-| a  |   |
-| b  |   |
-| c  |   |
-| d  |   |
-| *p1  |   |
-| *p2  |   |
-| *p3 |   |
-| p1  |   |
-| p2  |   |
-| p3  |   |
+| a  | 2  |
+| b  | -1  |
+| c  | 4  |
+| d  |  9 |
+| *p1  | 4  |
+| *p2  | 4  |
+| *p3 | 9  |
+| p1  | p2  |
+| p2  | &c  |
+| p3  | &d  |
 
 2. Ahora llene la siguiente tabla con el contenido de las variables hasta que se llega al punto de parada 2 (Ver comentario en el codigo):
 
 | Expresión  | Valor |
 | ------------- | ------------- |
-| a  |   |
-| b  |   |
-| c  |   |
-| d  |   |
-| *p1  |   |
-| *p2  |   |
-| *p3 |   |
-| p1  |   |
-| p2  |   |
-| p3  |   |
+| a  | 2  |
+| b  | -1  |
+| c  | 5  |
+| d  | -9  |
+| *p1  | 5  |
+| *p2  | 5  |
+| *p3 | -9  |
+| p1  | p2  |
+| p2  | &c  |
+| p3  | &d  |
 
 ## 4. Problemas de programacion resueltos
 
