@@ -60,6 +60,8 @@ int main() {
 
 Por que se muestran los valores mostrados a la salida en pantalla. Puede ser util que revise el siguiente [enlace](http://en.cppreference.com/w/c/language/operator_precedence)
 
+##### R. En la línea 12 el primer operador que se ejecuta es el parentesís, que se encarga de tomar el valor al que apunta *p1, aumentándolo a 4. Tiene mayor prioridad que la desreferenciación al estar más a la izquierda. En la línea 14 primero se desreferencia el contenido del apuntador, obteniendo la dirección a la que apunta *p2, y luego lo aumenta en una unidad, subiendo una posición en el stack.
+
 ### 2.2. Apuntadores y vectores
 
 1. ¿Que es lo que hace el siguiente [codigo](https://goo.gl/ybji6p)?
