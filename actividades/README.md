@@ -728,7 +728,17 @@ Para cada uno de los ejercicio de programacion propuestos a continuacion, realic
  *   @return el numero de veces que aparece ch en array o -1 si no aparece.
  */
 int contarCaracter(char *array, char ch) {
-  // Coloque su codigo aqui...
+  int counter = 0;
+  char *ptr = array;
+
+  while (*ptr) {
+    if (*ptr == ch) {
+      counter++;
+    }
+    *ptr++;
+  }
+
+  return counter == 0 ? -1 : counter;
 }
 ```
 
@@ -743,7 +753,22 @@ int contarCaracter(char *array, char ch) {
  *   @return el indice del primer ch en la cadena array
  */
 int obtenerIndice(char *array, char ch) {
-  // Coloque su codigo aqui...
+  int exists = contarCaracter(array, ch);
+
+  if (exists == -1) {
+    return -1;
+  }
+
+  int index = 0;
+  char *ptr = array;
+
+  while (*ptr) {
+    if (*ptr == ch) {
+      return index;
+    }
+    index++;
+    *ptr++;
+  }
 }
 ```
 
@@ -760,7 +785,21 @@ Para clarificar un poco la cosa, si por ejemplo la cadena es **hola: que mas** y
  *   @return un apuntador a la posicion inicial de la subcadena o NULL si el tamaño de index supera a la longitud de la cadena
  */
 char *obtenerSubcadena(char *array, int index) {
-  // Coloque su codigo aqui...
+  int length = strlen(array);
+
+  if (index >= length) {
+    return NULL;
+  }
+
+  int counter = 0;
+  char *ptr = array;
+
+  while (counter < index) {
+    *ptr++;
+    counter++;
+  }
+
+  return ptr;
 }
 ```
 Para averiguar la longitud de la cadena puede emplar la funcion **strlen** de la libreria **string.h**. Por ejemplo, para el caso, si la cadena es **hola que tal** y el indice ingresado por el usuario es **4**, la funcion debera retornar un apuntador que apunte a la posicion **5** de la cadena, de modo que cuando se imprima la cadena en cuestion a partir de este apuntado se muestre la siguiente salida **que tal**. En el siguiente ejemplo se aterriza lo anterior suponiendo que ya se codifico la funcion subcadena.
@@ -897,7 +936,9 @@ void stringToMayuscula(char s[]);
  */
 int esLetra(char ch) {
   // Coloque el codigo solucion a continuacion...
+  int value = (int) ch;
 
+  return ((value >= 65 && value <= 90) || (value >= 97 && value <= 122)) ? 1 : 0;
 }
 
 /**  
@@ -908,7 +949,10 @@ int esLetra(char ch) {
  */
 void volverMayuscula(char *ch) {
   // Coloque el codigo solucion a continuacion...
-
+  int value = (int) *ch;
+  if (value >= 97 && value <= 122) {
+    (*ch -= 32);
+  }
 }
 
 
@@ -921,7 +965,12 @@ void volverMayuscula(char *ch) {
 
 void stringToMayuscula(char s[]) {
   // Coloque el codigo solucion a continuacion...
+  char *ptr = s;
 
+  while (*ptr) {
+    volverMayuscula(ptr);
+    *ptr++;
+  }
 }
 ```
 
@@ -1044,7 +1093,163 @@ Entrada > ^C
 ```
 6. **Problema de programación**: Dado un vector x de n elementos reales, donde n es impar, diseñar una función que calcule y devuelva la mediana de ese vector. La mediana es el valor tal que la mitad de los números son mayores que el valor y la otra mitad son menores. Escribir un programa que compruebe la función.
 
+
+#include <stdio.h>
+
+void shell_sort(float a[], int n);
+void print(float a[]);
+float mean(float a[], int n);
+float median(float a[], int n);
+
+int main(int argc, char const *argv[]) {
+  float arr[3] = {3,1,2};
+  shell_sort(arr, 3);
+
+  printf("%f", mean(arr, 3));
+  printf("%s", "\n");
+  printf("%f", median(arr, 3));
+  printf("%s", "\n");
+
+  return 0;
+}
+
+float mean(float a[], int n) {
+  float acum = 0;
+  for (int i = 0; i < n; i++) {
+    acum += a[i];
+  }
+  return acum / (float) n;
+}
+
+float median(float a[], int n) {
+  return a[n/2];
+}
+
+void print(float a[]) {
+  for (int i = 0; i < 7;i++) {
+    printf("%f", a[i]);
+    printf("%s", " ");
+  }
+    printf("%s", "\n");
+}
+
+
+void shell_sort(float a[], int n) {
+    int i, j, increment;
+    float tmp;
+    for(increment = n/2; increment > 0; increment /= 2)
+    {
+        for(i = increment; i < n; i++)
+        {
+            tmp = a[i];
+            for(j = i; j >= increment; j -= increment)
+            {
+                if(tmp < a[j-increment])
+                    a[j] = a[j-increment];
+                else
+                    break;
+            }
+            a[j] = tmp;
+        }
+    }
+}
+
 7. **Problema de programación**: Se trata de resolver el siguiente problema escolar. Dadas las notas de los alumnos de un colegio en el primer curso de bachillerato, en las diferentes asignaturas (5, por comodidad), se trata de calcular la media de cada alumno, la media de cada asignatura, la media total de la clase y ordenar los alumnos por orden decreciente de notas medias individuales.
+
+#include <stdio.h>
+
+void shell_sort(float a[], int n);
+
+int main(int argc, char const *argv[]){
+
+    float school[4][5] = {
+        {1.2, 2.5, 5, 4.6, 4.8},
+        {5, 5, 4.8, 4.6, 4},
+        {3.5, 4.8, 4.9, 2, 5},
+        {4.2, 4, 3.5, 5, 4}};
+
+    float students[4]={0,0,0,0};
+    float acum = 0;
+
+    //Promedio de cada estudiante
+    printf("%s", "Promedio de cada estudiante:  ");
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            acum += school[i][j];
+        }
+        acum = acum / (float)4;
+        printf("%f", acum);
+        students[i]=acum;
+        printf("%s", "  ");
+        acum = 0;
+    }
+    printf("%s", "\n");
+
+    //Promedio de cada asignatura
+    printf("%s", "Promedio de cada asignatura:  ");
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            acum += school[j][i];
+        }
+        printf("%f", acum / (float)4);
+        printf("%s", "  ");
+        acum = 0;
+    }
+    printf("%s", "\n");
+
+    //Promedio de clase
+    printf("%s", "Promedio de clase:  ");
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            acum += school[j][i];
+        }
+    }
+    printf("%f", acum / (float)20);
+    printf("%s", "  ");
+    printf("%s", "\n");
+
+
+    //Estudiantes ordenados
+    shell_sort(students, 4);
+    printf("%s", "Estudiantes ordenados:  ");
+    for (int i = 0; i < 4;i++){
+        printf("%3f", students[i]);
+        printf("%s", "  ");
+    }
+    printf("%s", "\n");
+
+
+    return 0;
+}
+
+/*
+  Taken from https://www.programming9.com/programs/c-programs/234-c-program-for-shell-sort
+*/
+void shell_sort(float a[], int n) {
+    int i, j, increment;
+    float tmp;
+    for(increment = n/2; increment > 0; increment /= 2)
+    {
+        for(i = increment; i < n; i++)
+        {
+            tmp = a[i];
+            for(j = i; j >= increment; j -= increment)
+            {
+                if(tmp > a[j-increment])
+                    a[j] = a[j-increment];
+                else
+                    break;
+            }
+            a[j] = tmp;
+        }
+    }
+}
 
 **Nota**: utilizar como algoritmo de ordenación el método Shell.
 
