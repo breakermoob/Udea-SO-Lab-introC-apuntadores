@@ -812,8 +812,18 @@ Luego corralo:
 
 Responda las siguientes preguntas:
 1. ¿Que hace el programa anterior?
+
+    El programa toma los primeros 1000 carácteres que entran a través de la entrada estándar y los escribe a la salida estándar
+
 2. Describa las funciones ```getchar``` y ```putchar```
+
+    ```getchar``` toma un caracter de la entrada estándar y se lo pasa al programa, independientemente de lo que sea. 
+
+    ```putchar``` lleva un caracter a la salida estandar.
+
 3. ¿Cuales son las condiciones necesarias para que el primer ciclo deje de ejecutarse?
+
+    Que se alcance el final de la secuencia de la entrada estándar o se llegue al caracter número 1000.
 
 5. **Problema de programación**: Codifique un programa que permita convertir en mayuscula una cadena de caracteres ingresada por teclado y solo terminara su ejecución cuando el usuario emplee la combinación de teclas . Por ejemplo si la entrada del programa es:
 
