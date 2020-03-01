@@ -60,6 +60,8 @@ int main() {
 
 Por que se muestran los valores mostrados a la salida en pantalla. Puede ser util que revise el siguiente [enlace](http://en.cppreference.com/w/c/language/operator_precedence)
 
+##### R. En la línea 12 el primer operador que se ejecuta es el parentesís, que se encarga de tomar el valor al que apunta *p1, aumentándolo a 4. Tiene mayor prioridad que la desreferenciación al estar más a la izquierda. En la línea 14 primero se desreferencia el contenido del apuntador, obteniendo la dirección a la que apunta *p2, y luego lo aumenta en una unidad, subiendo una posición en el stack.
+
 ### 2.2. Apuntadores y vectores
 
 1. ¿Que es lo que hace el siguiente [codigo](https://goo.gl/ybji6p)?
@@ -810,8 +812,18 @@ Luego corralo:
 
 Responda las siguientes preguntas:
 1. ¿Que hace el programa anterior?
+
+    El programa toma los primeros 1000 carácteres que entran a través de la entrada estándar y los escribe a la salida estándar
+
 2. Describa las funciones ```getchar``` y ```putchar```
+
+    ```getchar``` toma un caracter de la entrada estándar y se lo pasa al programa, independientemente de lo que sea. 
+
+    ```putchar``` lleva un caracter a la salida estandar.
+
 3. ¿Cuales son las condiciones necesarias para que el primer ciclo deje de ejecutarse?
+
+    Que se alcance el final de la secuencia de la entrada estándar o se llegue al caracter número 1000.
 
 5. **Problema de programación**: Codifique un programa que permita convertir en mayuscula una cadena de caracteres ingresada por teclado y solo terminara su ejecución cuando el usuario emplee la combinación de teclas . Por ejemplo si la entrada del programa es:
 
